@@ -12,7 +12,7 @@
         var ajax = new XMLHttpRequest();
         ajax.onload = functionName;
         ajax.onerror = errorFunctionName;
-        ajax.open("GET", "/.netlify/functions/yes_no", true);
+        ajax.open("GET", "https://testing-netlify-functions.netlify.com/.netlify/functions/yes_no", true);
         ajax.send();
         function functionName() {
             console.log(this); // log the response
