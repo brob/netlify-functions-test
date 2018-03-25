@@ -1,7 +1,6 @@
 // functions/yes_no.js
 
 exports.handler = function(event, context, callback) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
 
   const {yes = 'yes', no = 'no'} = event.queryStringParameters;
   callback(null, {
