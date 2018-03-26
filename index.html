@@ -7,6 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 
+    
+</head>
+<body>
+    <h1>Hello World</h1>
+    <div id="response"></div>
+
+
+
     <script>
 
         var ajax = new XMLHttpRequest();
@@ -15,14 +23,15 @@
         ajax.open("GET", "https://testing-netlify-functions.netlify.com/.netlify/functions/yes_no", true);
         ajax.send();
         function functionName() {
-            console.log(this); // log the response
             if (this.status == 200) { // request succeeded
-                // do something with this.responseText;
-                console.log('hello'); // log the response
-
+                console.log(this.response); // log the response
+                var app = document.getElementById('response');
+                debugger;
+                app.innerHTML(response);
+              
             } else {
                 // handle more HTTP response codes here;
-                console.log('hello fail'); // log the response
+                
 
             }
         }
@@ -34,8 +43,5 @@
 
 
     </script>
-</head>
-<body>
-    <h1>Hello World</h1>
 </body>
 </html>
