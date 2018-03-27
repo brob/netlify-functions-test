@@ -39,7 +39,3 @@ exports.handler = function(event, context, callback) {
       body: randomHouse,
     });
   };
-
-
-
-  exports.handler();
