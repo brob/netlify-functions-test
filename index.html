@@ -7,40 +7,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 
+    <style>
+
+        :root {
+            --gradient-start: rgba(0, 0, 0, .2);
+            --gradient-end: rgba(130, 50, 25, .2);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-image: repeating-linear-gradient(-45deg, var(--gradient-start), var(--gradient-start) 20px, var(--gradient-end) 20px, var(--gradient-end) 40px);
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            box-sizing: border-box;
+            display: flex;
+        }
+        .container {
+            margin: auto;
+            
+        }
+    </style>
+
     
 </head>
 <body>
-    <h1>Hello World</h1>
-    <div id="response"></div>
+    <div class="container">
+        <h1>Hello World</h1>
+        <a href="#" id="sortMe">Sort Me!</a>
+        <div id="response"></div>
+    </div>
 
 
 
     <script>
-
-        var ajax = new XMLHttpRequest();
-        ajax.onload = functionName;
-        ajax.onerror = errorFunctionName;
-        ajax.open("GET", "https://testing-netlify-functions.netlify.com/.netlify/functions/yes_no", true);
-        ajax.send();
-        function functionName() {
-            if (this.status == 200) { // request succeeded
-                console.log(this.response); // log the response
-                var app = document.getElementById('response');
-                debugger;
-                app.innerHTML(response);
-              
-            } else {
-                // handle more HTTP response codes here;
-                
-
+        function getSorted(e) {
+            e.preventDefault;
+            var ajax = new XMLHttpRequest();
+            ajax.onload = functionName;
+            ajax.onerror = errorFunctionName;
+            ajax.open("GET", "https://testing-netlify-functions.netlify.com/.netlify/functions/hogwarts", true);
+            ajax.send();
+            function functionName() {
+                if (this.status == 200) { // request succeeded
+                    console.log(this.response); // log the response
+                    var app = document.getElementById('response');
+                    var houseNode = buildHouse(this.response);
+                    app.prepend(houseNode);
+                  
+                } else {
+                    // handle more HTTP response codes here;
+                    
+    
+                }
+            }
+            function errorFunctionName(e) {
+                console.log(this);
+                console.error(e);
+                // do something with this.status, this.statusText
             }
         }
-        function errorFunctionName(e) {
-            console.log(this);
-            console.error(e);
-            // do something with this.status, this.statusText
+        
+        function buildHouse(house) {
+            var houseParent = document.createElement('h2');
+            var houseContent = document.createTextNode('Congratulations, you\'re ' + house + '!'); 
+            houseParent.appendChild(houseContent);  
+            return houseParent
+        }
+        function clicks() {
+            document.getElementById('sortMe').addEventListener("click", getSorted);
+
         }
 
+        clicks();
 
     </script>
 </body>
