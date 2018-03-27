@@ -22,7 +22,7 @@ const houses = [
         'main_color': '236,185,57',
         'secondary_color': '114,98,85'
     }
-]
+];
 
 
 exports.handler = function(event, context, callback) {
