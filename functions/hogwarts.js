@@ -1,7 +1,6 @@
 // functions/hogwarts.js
 
-
-const houses = [
+const houses = `[
     {
         'name': 'Gryffindor',
         'main_color': '174,0,1',
@@ -22,11 +21,12 @@ const houses = [
         'main_color': '236,185,57',
         'secondary_color': '114,98,85'
     }
-];
+]`;
 
 
 exports.handler = function(event, context, callback) {
     var randomHouse = houses[Math.floor(Math.random()*houses.length)];
+    console.log(randomHouse);
     callback(null, {
       headers: {
         "Access-Control-Allow-Origin" : "*"
